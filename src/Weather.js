@@ -38,7 +38,7 @@ export default function Weather() {
         <div className="col-6">
           <div className="clearfix weather-temperature">
             <img
-              src={weather.Data.imgUrl}
+              src={weatherData.imgUrl}
               alt={weatherData.description}
               className="float-left"
             />
