@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React from "react";
 import "./Weather.css";
 import axios from "axios";
 import SearchEngine from "./SearchEngine";
@@ -7,35 +7,20 @@ import CurrentLocation from "./CurrentLocation";
 import Api from "./Api";
 
 export default function Weather() {
-  state = {
-    city: this.props.city,
-  };
-
-  refreshWeather();
-  {
-    let url = `${Api.url}/data/2.5/weather?appid=${Api.key}&units=metric&${params}`;
-    axios.get(url).then((response) => {
-      this.setState({
-        city: response.data.name,
-        weather: {
-          description: response.data.weather[0].main,
-          icon: response.data.weather[0].icon,
-          precipitation: Math.round(response.data.main.humidity) + "%",
-          temperature: Math.round(response.data.main.temp),
-          time: Date(response.data.dt * 1000).dayTime(),
-          wind: Math.round(response.data.wind.speed) + "km/h",
-        },
-      });
+  let url = `${Api.url}/data/2.5/weather?appid=${Api.key}&units=metric&$`;
+  axios.get(url).then((response) => {
+    this.setState({
+      city: response.data.name,
+      weather: {
+        description: response.data.weather[0].main,
+        icon: response.data.weather[0].icon,
+        precipitation: Math.round(response.data.main.humidity) + "%",
+        temperature: Math.round(response.data.main.temp),
+        time: Date(response.data.dt * 1000).dayTime(),
+        wind: Math.round(response.data.wind.speed) + "km/h",
+      },
     });
-  }
-
-  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
-    this.refreshWeather(`lat=${latitude}&lon=${longitude}`);
-  };
-
-  refresh = (city) => {
-    this.refreshWeather(`q=${city}`);
-  };
+  });
 
   return (
     <div className="Weather">

@@ -1,4 +1,4 @@
-import react from "react";
+import React, { useState } from "react";
 export default function SearchEngine() {
   let [city, setCity] = useState("");
   let [message, setMessage] = useState("");
